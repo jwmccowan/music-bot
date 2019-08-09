@@ -10,12 +10,25 @@ client.once('ready', () => {
 client.on('message', msg => {
 	if (!msg.guild) return;
 
-    logger.info(`Message Received: ${msg}`);
+    var prefix = config.prefix;
+    if (msg.content.substring(0, prefix.length) !== prefix) return;
 
-	if (msg.content === 'Music') {
-        logger.info('Sending message "Bot" back.')
-		msg.channel.send('Bot');
-	}
+    logger.info(`Message Received: ${msg}`);
+    var content = msg.content.substring(prefix.length);
+    switch(content)
+    {
+        case 'Music':
+            logger.info('Sending message: "Bot"');
+            msg.channel.send('Bot');
+            break;
+        case 'Reminder':
+            logger.info('Sending message: "Bot"');
+            msg.channel.send('Bot');
+            break;
+        default:
+            logger.info('Unrecognized Command');
+            msg.channel.send('Unrecognized Command ya dummy');
+    }
 });
 
 
