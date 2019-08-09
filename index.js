@@ -1,15 +1,10 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require('./config.json');
-const winston = require('winston');
-
-const logger = winston.createLogger({
-	level: 'info',
-	format: winston.format.json()
-});
+const logger = require('./logger.js');
 
 client.once('ready', () => {
-	.log(`Bot logged in as ${client.user.tag}`);
+	logger.info(`Bot logged in as ${client.user.tag}`);
 });
 
 client.on('message', msg => {
@@ -19,5 +14,8 @@ client.on('message', msg => {
 		msg.channel.send('Bot');
 	}
 });
+
+
+
 
 client.login(config.token);
