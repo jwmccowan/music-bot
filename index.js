@@ -10,7 +10,10 @@ client.once('ready', () => {
 client.on('message', msg => {
 	if (!msg.guild) return;
 
+    logger.info(`Message Received: ${msg}`);
+
 	if (msg.content === 'Music') {
+        logger.info('Sending message "Bot" back.')
 		msg.channel.send('Bot');
 	}
 });
