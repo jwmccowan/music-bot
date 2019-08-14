@@ -19,6 +19,6 @@ module.exports = class DateCommand extends Command {
 
 	async run(msg) {
 		const now = new Date();
-		msg.reply(`It is currently ${now} in New York.`);
+		msg.reply(`It is currently ${now} in the server's timezone.`);
 	}
 };
