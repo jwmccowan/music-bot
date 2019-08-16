@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const logger = require('../../logger.js');
+const { Logger } = requireWrapper('utils.js');
 
 module.exports = class UserInfoCommand extends Command {
 	constructor(client) {

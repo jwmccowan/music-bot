@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const logger = require('../../logger.js');
+const { Logger } = requireWrapper('utils.js');
 const fetch = require('node-fetch');
 
 module.exports = class KittyCommand extends Command {
@@ -20,7 +20,7 @@ module.exports = class KittyCommand extends Command {
 
 	async run(msg) {
 		const  body  = await fetch('https://aws.random.cat/meow').then(response => response.json());
-		logger.info(`Sending: ${JSON.stringify(body)}`);
+		Logger.info(`Sending: ${JSON.stringify(body)}`);
 		msg.say(body.file);
 	}
 };

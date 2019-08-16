@@ -1,6 +1,5 @@
 const { Command } = require('discord.js-commando');
-const logger = require('../../logger.js');
-const reminder = require('../../reminder.js');
+const { Logger, Reminder } = requireWrapper('utils.js');
 
 module.exports = class SetReminderCommand extends Command {
 	constructor(client) {
@@ -19,8 +18,8 @@ module.exports = class SetReminderCommand extends Command {
 	}
 
 	async run(msg) {
-		reminder.addReminder('* * * * *', 'It\'s been a minute!', msg.channel);
-		logger.info('Creating reminder.');
+		Reminder.addReminder('* * * * *', 'It\'s been a minute!', msg.channel);
+		Logger.info('Creating reminder.');
 		msg.say('Creating reminder.');
 	}
 };
