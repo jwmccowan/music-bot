@@ -1,7 +1,9 @@
+global.requireWrapper = name => require(__dirname + '/' + name);
+
 const { CommandoClient } = require('discord.js-commando');
 const path = require('path');
 
-const logger = require('./logger.js');
+const { Logger } = requireWrapper('utils.js');
 
 const { prefix, token, owner } = require('./config.json');
 
@@ -22,10 +24,10 @@ client.registry
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.once('ready', () => {
-	logger.info(`Logged in as ${client.user.tag}! (${client.user.id})`);
+	Logger.info(`Logged in as ${client.user.tag}! (${client.user.id})`);
 	client.user.setActivity('Listening....');
 });
 
-client.on('error', error => logger.error(error));
+client.on('error', error => Logger.error(error));
 
 client.login(token);
